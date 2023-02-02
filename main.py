@@ -137,6 +137,7 @@ shape_colors = [(0, 255, 0), (255, 0, 0), (0, 255, 255), (255, 255, 0), (255, 16
 # index 0 - 6 represent shape
 
 
+
 class Piece(object):
     def __init__(self, x, y, shape):
         self.x = x
