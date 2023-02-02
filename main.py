@@ -28,7 +28,7 @@ block_size = 30
 top_left_x = (s_width - play_width) // 2
 top_left_y = s_height - play_height
 
-# SHAPE FORMATS
+# SHAPE FORMATS for each letter
 
 S = [['.....',
       '......',
@@ -134,13 +134,16 @@ T = [['.....',
 
 shapes = [S, Z, I, O, J, L, T]
 shape_colors = [(0, 255, 0), (255, 0, 0), (0, 255, 255), (255, 255, 0), (255, 165, 0), (0, 0, 255), (128, 0, 128)]
-
-
 # index 0 - 6 represent shape
 
 
 class Piece(object):
-    pass
+    def __init__(self, x, y, shape):
+        self.x = x
+        self.y = y
+        self.shape = shape
+        self.color = shape_colors(shapes.index(shape))
+        self.rotation = 0
 
 
 def create_grid(locked_positions={}):
