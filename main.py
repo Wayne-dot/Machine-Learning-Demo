@@ -10,8 +10,6 @@ import random
 # - rotating shape in main
 # - setting up the main
 
-#for the set up of the tetris
-
 """
 10 x 20 square grid
 shapes: S, Z, I, O, J, L, T
