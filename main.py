@@ -160,7 +160,15 @@ def create_grid(locked_positions={}):
 
 
 def convert_shape_format(shape):
-    pass
+    positon = []
+    format = shape.shape[shape.rotation % len(shape.shape)]
+
+    for i, line in enumerate(format):
+        row = list[line]
+        #..0..
+        for j, column in enumerate(row):
+            if column == "0":
+                positon.append((shape.x + j, shape.y + i))
 
 
 def valid_space(shape, grid):
@@ -180,13 +188,14 @@ def draw_text_middle(text, size, color, surface):
 
 
 def draw_grid(surface, grid):
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            pygame.draw.rect(surface, grid[i][j], (top_left_x + j * block_size, top_left_y + i * block_size),
-                             block_size, block_size, 0)
+    # draw the line for the grid
+    sx = top_left_x
+    sy = top_left_y
 
-    pygame.draw.rect(surface, (255, 0, 0), (top_left_x, top_left_y, play_width, play_height, 4))
-    pygame.display.update()
+    for i in range(len(grid)):
+        pygame.draw.line(surface, (128, 128, 128), (sx, sy + i * block_size), (sx + play_width, sy + i * block_size))
+        for j in range(len(grid[i])):
+            pygame.draw.line(surface, (128, 128, 128), (sx + j * block_size, sy), sx + + j * block_size, sy + play_height)
 
 
 def clear_rows(grid, locked):
@@ -205,6 +214,14 @@ def draw_window(surface, grid):
     label = font.render("Tetris", 1, (255, 255, 255))
 
     surface.blit(label, (top_left_x + play_width / 2 - label.get_width() / 2), 30)
+
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            pygame.draw.rect(surface, grid[i][j], (top_left_x + j * block_size, top_left_y + i * block_size),
+                             block_size, block_size, 0)
+
+    pygame.draw.rect(surface, (255, 0, 0), (top_left_x, top_left_y, play_width, play_height, 4))
+
     draw_grid(surface, grid)
     pygame.display.update()
 
@@ -227,7 +244,7 @@ def main(win):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     current_piece.x -= 1
-                    if not(valid_space(current_piece, grid)):
+                    if not (valid_space(current_piece, grid)):
                         current_piece += 1
                 if event.key == pygame.K_RIGHT:
                     current_piece.x += 1
@@ -243,8 +260,10 @@ def main(win):
                         current_piece -= 1
         draw_window(win, grid)
 
+
 def main_menu(win):
     main(win)
+
 
 win = pygame.display.set_mode((s_width, s_height))
 pygame.display.set_caption("Tetris")
