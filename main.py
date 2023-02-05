@@ -287,7 +287,7 @@ def main(win):
     next_piece = get_shape()
     clock = pygame.time.Clock()
     fell_time = 0
-    fall_speed = 0.27
+    fall_speed = 0.5
 
     while run:
         grid = create_grid(lock_posistion)
@@ -353,3 +353,4 @@ def main_menu(win):
 win = pygame.display.set_mode((s_width, s_height))
 pygame.display.set_caption("Tetris")
 main_menu(win)  # start game
+
