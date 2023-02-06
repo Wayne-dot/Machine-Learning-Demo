@@ -151,16 +151,18 @@ class Piece(object):
 
 
 def update_score(nscore):
-    with open("score.txt", "r") as file:
-        lines = file.readlines()
-        score = lines[0].strip()
+    score = max_score()
     with open("score.txt", "w") as file:
         if int(score) > int(nscore):
             file.write(str(score))
         else:
             file.write(str(nscore))
 
-
+def max_score():
+    with open("score.txt", "r") as file:
+        lines = file.readlines()
+        score = lines[0].strip()
+    return score
 
 
 
@@ -276,7 +278,7 @@ def draw_next_shape(shape, surface):
     surface.blit(label, (sx + 10, sy - 30))
 
 
-def draw_window(surface, grid, score=0):
+def draw_window(surface, grid, score=0, last_score=0):
     surface.fill((0, 0, 0))
 
     pygame.font.init()
@@ -285,6 +287,7 @@ def draw_window(surface, grid, score=0):
 
     surface.blit(label, (top_left_x + play_width / 2 - (label.get_width() / 2), 30))
 
+    #current score
     font = pygame.font.SysFont("Comic", 30)
     label = font.render("Score" + str(score), 1, (255, 255, 255))
 
@@ -292,6 +295,15 @@ def draw_window(surface, grid, score=0):
     sy = top_left_y + play_height / 2 - 100
 
     surface.blit(label, (sx+20, sy+160))
+
+
+    #last score
+    label = font.render("Highest score" + last_score, 1, (255, 255, 255))
+    sx = top_left_x - 200
+    sy = top_left_y + 200
+
+    surface.blit(label, (sx + 20, sy + 160))
+
 
     for i in range(len(grid)):
         for j in range(len(grid[i])):
@@ -304,6 +316,7 @@ def draw_window(surface, grid, score=0):
 
 
 def main(win):
+    last_score = max_score()
     lock_posistion = {}
     grid = create_grid(lock_posistion)
 
@@ -373,7 +386,7 @@ def main(win):
 
 
 
-        draw_window(win, grid, score)
+        draw_window(win, grid, score, last_score)
         draw_next_shape(next_piece, win)
         pygame.display.update()
 
