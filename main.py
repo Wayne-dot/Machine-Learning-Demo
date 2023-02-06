@@ -150,6 +150,20 @@ class Piece(object):
         self.rotation = 0
 
 
+def update_score(nscore):
+    with open("score.txt", "r") as file:
+        lines = file.readlines()
+        score = lines[0].strip()
+    with open("score.txt", "w") as file:
+        if int(score) > int(nscore):
+            file.write(str(score))
+        else:
+            file.write(str(nscore))
+
+
+
+
+
 def create_grid(locked_positions={}):
     grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
 
@@ -299,7 +313,7 @@ def main(win):
     next_piece = get_shape()
     clock = pygame.time.Clock()
     fell_time = 0
-    fall_speed = 0.27
+    fall_speed = 0.3
     level_time = 0
     score = 0
 
@@ -368,7 +382,7 @@ def main(win):
             pygame.display.update()
             pygame.time.delay(1500)
             run = False
-    pygame.display.quit()
+            update_score(score)
 
 
 def main_menu(win):
