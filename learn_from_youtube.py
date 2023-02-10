@@ -395,6 +395,7 @@ def main(win):
             update_score(score)
 
 
+
 def main_menu(win):
     run = True
     while run:
