@@ -5,4 +5,4 @@
 <hr>
   
 
-<center> <img src="https://github.com/Wayne-dot/Tetris/blob/main/image.png" width="350" height="350"> </center>
+<p align="center"> <img src="https://github.com/Wayne-dot/Tetris/blob/main/image.png" width="350" height="350"> </p>
