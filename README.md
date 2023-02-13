@@ -6,3 +6,8 @@
   
 
 <p align="center"> <img src="https://github.com/Wayne-dot/Tetris/blob/main/image.png" width="350" height="350"> </p>
+
+<hr>
+
+https://user-images.githubusercontent.com/75097467/218368580-30620b81-6d77-4574-9468-70bcc4428abf.mp4
+
