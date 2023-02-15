@@ -8,6 +8,9 @@ import pygame
 
 def general():
     pass
+#   create a grid
+    grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
+    print(grid)
 
 
 
@@ -15,7 +18,8 @@ def start(win):
     going = True
 
     while going:
-        win.fill((14, 174, 243))
+        win.fill((198, 242, 249))
+        #show a thing where it says press the key to start the game
         pygame.display.update()
         # draw and display update
         for event in pygame.event.get():
@@ -24,6 +28,10 @@ def start(win):
             if event.type == pygame.KEYDOWN:
                 print(event.type)
                 general()
+    pygame.display.quit()
+
+
+
 
 
 pygame.font.init()
@@ -32,7 +40,4 @@ pygame.font.init()
 win = pygame.display.set_mode(size=(500, 500))
 # title
 pygame.display.set_caption("Tetris by Wayne")
-
 start(win)
-
-print(win)
