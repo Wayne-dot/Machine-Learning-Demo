@@ -6,39 +6,33 @@ import pygame
 # define dimension
 
 
+def general():
+    pass
+
+
+
 def start(win):
-    going = False
-    # intital draw
-    run = True
-    while run:
+    going = True
+
+    while going:
+        win.fill((14, 174, 243))
+        pygame.display.update()
+        # draw and display update
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                going = False
             if event.type == pygame.KEYDOWN:
-                win.fill((14, 174, 243))
-                pygame.time.delay(10000)
-
-
-
-
+                print(event.type)
+                general()
 
 
 pygame.font.init()
 
-# size will be set in dimension, surface object
+# size will be set in dimension, win = surface object
 win = pygame.display.set_mode(size=(500, 500))
-
-run = True
-while run:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-        if event.type == pygame.KEYDOWN:
-            win.fill((14, 174, 243))
-            pygame.time.delay(10000)
-
 # title
-# pygame.display.set_caption("Tetris by Wayne")
+pygame.display.set_caption("Tetris by Wayne")
 
+start(win)
 
 print(win)
