@@ -8,5 +8,4 @@
 <p align="center"> <img src="https://github.com/Wayne-dot/Tetris/blob/main/image.png" width="350" height="350"> </p>
 
 <hr>
-https://github.com/Wayne-dot/Tetris/blob/f01366d83052ce5d5f8878a18b8918ec89f3489d/demo.gif
-
+![](https://github.com/Wayne-dot/Tetris/blob/f01366d83052ce5d5f8878a18b8918ec89f3489d/demo.gif)
